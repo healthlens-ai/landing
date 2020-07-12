@@ -1,0 +1,254 @@
+@import "./_styles/animations";
+@import "./_styles/variables";
+@import "./_styles/typography";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // this is 1rem
+  overflow: hidden;
+}
+
+.clearfix {
+  &::after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+
+  .wrapper {
+    background: linear-gradient(
+      154.87deg,
+      $color-dark-blue 0%,
+      $color-light-blue 100%
+    );
+    height: 100vh;
+    color: $color-text-light;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -50rem;
+      left: -25rem;
+      border-radius: 50%;
+      border: 8rem solid rgba($color-text-light, 0.1);
+      width: 60rem;
+      height: 60rem;
+      z-index: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 70rem;
+      left: -46rem;
+      border-radius: 50%;
+      border: 12rem solid rgba($color-text-light, 0.1);
+      width: 70rem;
+      height: 70rem;
+      z-index: 0;
+    }
+  }
+}
+
+.photo-container {
+  position: absolute;
+  height: 100vh;
+  right: 0;
+  z-index: 0;
+  clip-path: circle(61.9% at 62% 51%);
+
+  .magnifier-wrapper {
+    position: relative;
+  }
+
+  .img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+  }
+
+  img {
+    height: 92vw;
+  }
+
+  &::after {
+    content: "";
+    opacity: 1;
+    position: absolute;
+    background: linear-gradient(
+      125.42deg,
+      rgba(4, 53, 98, 0.7) 0%,
+      rgba(163, 211, 255, 0.7) 100%
+    );
+    height: 100vh;
+    width: 100%;
+    right: 0;
+    clip-path: circle(61.9% at 62% 51%);
+    transition: opacity 0.5s ease-out;
+  }
+  &:hover {
+    &::after {
+      opacity: 0;
+    }
+  }
+}
+
+header {
+  font-family: "SF Pro Display", sans-serif;
+  padding: 2.3rem 7rem;
+  z-index: 1;
+
+  .header_title {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-text-light;
+    line-height: 2.9rem;
+    font-weight: 800;
+    font-size: 2.4rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &-highlight {
+      color: $color-text-blue;
+    }
+  }
+}
+
+main {
+  text-align: left;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 12.2rem;
+  z-index: 50;
+  width: 42vw;
+  font-size: 2.4rem;
+
+  h1 {
+    font-size: 10rem;
+    line-height: 12.2rem;
+    font-family: "Montserrat Bold";
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-weight: 300;
+    line-height: 2.9rem;
+    font-family: "Montserrat Light";
+  }
+
+  .main_email {
+    margin-top: 3rem;
+
+    &-input,
+    &-btn {
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      border: 0.1rem solid $color-orange;
+      box-sizing: border-box;
+      padding: 1rem 1.3rem;
+
+      &:active,
+      &:focus {
+        outline: $color-orange;
+      }
+    }
+
+    &-input {
+      border-radius: 1rem 0 0 1rem;
+      background-color: transparent;
+      color: $color-text-light;
+      min-width: 29rem;
+
+      &::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $color-text-light;
+        opacity: 1; /* Firefox */
+      }
+
+      &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $color-text-light;
+      }
+
+      &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $color-text-light;
+      }
+    }
+
+    &-btn {
+      background-color: $color-orange;
+      color: $color-text-dark;
+      border-radius: 0 1rem 1rem 0;
+      padding: 1rem 5rem;
+      margin-left: -0.7rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($color-orange, 3);
+      }
+    }
+  }
+}
+
+footer {
+  flex-shrink: 0;
+  padding: 0 12.2rem;
+  font-size: 2rem;
+  z-index: 1;
+
+  .socials {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+
+    li {
+      list-style: none;
+      border: 0.2rem solid $color-text-light;
+      border-radius: 50%;
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      transition: opacity 0.3s;
+
+      &:not(:last-child) {
+        margin-right: 1.6rem;
+      }
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@import "./_styles/media";
