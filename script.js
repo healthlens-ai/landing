@@ -18,16 +18,10 @@ function magnify(imgID, zoom) {
   w = glass.offsetWidth / 2;
   h = glass.offsetHeight / 2;
 
-  /* Execute a function when someone moves the magnifier glass over the image: */
-  glass.addEventListener('mousemove', moveMagnifier);
-  console.log(img);
-  img.addEventListener('mousemove', moveMagnifier);
-
+  document.body.addEventListener('mousemove', moveMagnifier);
   /*and also for touch screens:*/
-  glass.addEventListener('touchmove', moveMagnifier);
-  img.addEventListener('touchmove', moveMagnifier);
+  document.body.addEventListener('touchmove', moveMagnifier);
   function moveMagnifier(e) {
-    console.log(1);
     var pos, x, y;
     /* Prevent any other actions that may occur when moving over the image */
     e.preventDefault();
